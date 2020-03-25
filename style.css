@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+.header {
+    background: #7fbbbf;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+.heading {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.75rem;
+}
+.updated {
+    margin-top: .5rem;
+}
+.section, .aside, .main {
+    padding: .5rem;
+}
+.subheading {
+    background: #7fbbbf;
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+}
+.tally {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+.tally__stat {
+    padding: 0.5rem;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #500778;
+    color: #fff;
+}
+.tally__stat:not(:first-child) {
+    margin-top: .125rem;
+}
+.tally__result {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+.acquisition {
+    margin: 1rem 0 0;
+}
+.acquisition__bar {
+    height: .5rem;
+    background: #7fbbbf;
+    position: relative;
+}
+.acquisition__bar:not(:first-child) {
+    margin-top: .5rem;
+}
+.acquisition__stat {
+    margin: .25rem 0 0;
+    display: flex;
+    align-items: baseline;
+}
+.acquisition__result {
+    background: #000;
+    color: #fff;
+    margin-right: .25rem;
+    padding: .25rem;
+    border-radius: .25rem;
+}
+.sex__bar {
+    height: .5rem;
+    margin: 1rem 0 0;
+    position: relative;
+    display: flex;
+}
+.sex__bar-result {
+    height: 100%;
+}
+.male {
+    background: #201547;
+}
+.female {
+    background: #007780;
+}
+.not-stated {
+    background: #500778;
+}
+.sex {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sex__stat {
+    margin-top: .25rem;
+    display: flex;
+    align-items: baseline;
+}
+.sex__result {
+    color: #fff;
+    margin-right: .25rem;
+    padding: .25rem;
+    border-radius: .25rem;
+}
+.median {
+    margin: 1rem 0;
+    text-align: center;
+}
+.footer {
+    padding: 1rem;
+    background: #e3e3e3;
+    text-align: center;
+    line-height: 1.5;
+}
+@media screen and (min-width: 64rem) {
+    .section { 
+        display: flex;
+    }
+    .aside {
+        flex-basis: 25%;
+        flex-shrink: 0;
+    }
+    .main {
+        flex: 1;
+    }
+    .tally__stat {
+        flex-direction: column-reverse;
+        padding: 1rem;
+    }
+    .tally__result {
+        margin-bottom: .5rem;
+    }
+}

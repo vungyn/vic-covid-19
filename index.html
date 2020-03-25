@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>COVID-19 in Victoria</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="style.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="script.js"></script>
+	</head>
+	<body>
+        <header class="header">
+            <h1 class="heading">COVID-19 in Victoria</h1>
+            <div class="updated">Last Updated: <span class="modified"></span></div>
+        </header>
+        <section class="section">
+            <aside class="aside">
+                <ul class="tally">
+                    <li class="tally__stat"><div class="tally__title">Confirmed Cases</div><div class="tally__result cases"></div></li>
+                    <li class="tally__stat"><div class="tally__title">Deaths</div><div class="tally__result deceased"></div></li>
+                    <li class="tally__stat"><div class="tally__title">Recovered</div><div class="tally__result recovered"></div></li>
+                    <li class="tally__stat"><div class="tally__title">Tested</div><div class="tally__result tested"></div></li>
+                </ul>
+            </aside>
+            <main class="main">
+                <canvas class="casechart"></canvas>
+            </main>
+        </section>
+        <section class="section">
+            <aside class="aside">
+                <h2 class="subheading">Cases by mode of acquisition</h2>
+                <dl class="acquisition"></dl>
+            </aside>
+            <main class="main">
+                <h2 class="subheading">Cases by age group and sex</h2>
+                <div class="sex__bar"></div>
+                <ul class="sex"></ul>
+                <div class="median"></div>
+                <canvas class="agechart"></canvas>
+            </main>
+        </section>
+        <footer class="footer">Data from <a href="https://app.powerbi.com/view?r=eyJrIjoiODBmMmE3NWQtZWNlNC00OWRkLTk1NjYtMjM2YTY1MjI2NzdjIiwidCI6ImMwZTA2MDFmLTBmYWMtNDQ5Yy05Yzg4LWExMDRjNGViOWYyOCJ9&pageName=ReportSection">Department of Health and Human Services</a> &middot; Built by <a href="https://github.com/vungyn">@vungyn</a></footer>
+		</body>
+</html>
