@@ -163,7 +163,13 @@ window.addEventListener('DOMContentLoaded', () => {
             data.lga = response.results[0].result.data.dsr.DS[0].PH[0].DM0;
 
             data.lga.forEach(function(i, k) {
-                document.querySelector('.lga').innerHTML += '<li class="lga__item"><div class="lga__name">' + i.C[0] + '</div><div class="lga__result">' + (i.C[1] !== undefined ? i.C[1] : data.lga[k - 1].C[1]) + '</div></li>';
+                var cases = i.C[1];
+                var index = 0;
+                while (cases === undefined) {
+                    cases = data.lga[k - ++index].C[1];
+                }
+                // + (i.C[1] !== undefined ? i.C[1] : data.lga[k - 1].C[1])
+                document.querySelector('.lga').innerHTML += '<li class="lga__item"><div class="lga__name">' + i.C[0] + '</div><div class="lga__result">' + cases + '</div></li>';
             });
         }
     }
