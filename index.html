@@ -47,7 +47,25 @@
         <h2 class="subheading">Cases by local government area</h2>
         <section class="section">
             <aside class="aside">
-                <ul class="lga"></ul>
+                <table class="lga__table">
+                    <thead class="lga__header">
+                        <tr>
+                            <th class="lga__name">LGA</th>
+                            <th class="lga__cases">Cases</th>
+                        </tr>
+                    </thead>
+                    <tbody class="lga"></tbody>
+                    <tbody>
+                        <tr class="lga__row">
+                            <td class="lga__name">Overseas</td>
+                            <td class="lga__cases overseas"></td>
+                        </tr>
+                        <tr class="lga__row">
+                            <td class="lga__name">Unknown</td>
+                            <td class="lga__cases unknown"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </aside>
             <main class="main">
                 <div class="map__wrapper">
