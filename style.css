@@ -33,6 +33,9 @@ a {
     font-size: 1rem;
     text-align: center;
 }
+.section + .subheading {
+    margin: 1rem 1rem 0;
+}
 .tally {
     list-style: none;
     display: flex;
@@ -120,7 +123,6 @@ a {
 .lga {
     list-style: none;
     margin: 0;
-    margin-top: 1rem;
     padding: 0;
 }
 .lga__item {
@@ -131,6 +133,17 @@ a {
 }
 .lga__item:first-child {
     border-top: .0625rem solid #e3e3e3;
+}
+.map__wrapper {
+    padding-bottom: 75%;
+    position: relative;
+}
+.map {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 .footer {
     padding: 1rem;

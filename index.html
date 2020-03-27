@@ -1,16 +1,19 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>COVID-19 in Victoria</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="style.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <title>COVID-19 in Victoria</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet-src.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.0/chroma.min.js"></script>
         <script src="script.js"></script>
-	</head>
-	<body>
+    </head>
+    <body>
         <header class="header">
             <h1 class="heading">COVID-19 in Victoria</h1>
             <div class="updated">Last Updated: <span class="modified"></span></div>
@@ -41,12 +44,17 @@
                 <canvas class="agechart"></canvas>
             </main>
         </section>
+        <h2 class="subheading">Cases by local government area</h2>
         <section class="section">
-            <main class="main">
-                <h2 class="subheading">Cases by local government area</h2>
+            <aside class="aside">
                 <ul class="lga"></ul>
+            </aside>
+            <main class="main">
+                <div class="map__wrapper">
+                    <div class="map"></div>
+                </div>
             </main>
         </section>
         <footer class="footer">Data from <a href="https://app.powerbi.com/view?r=eyJrIjoiODBmMmE3NWQtZWNlNC00OWRkLTk1NjYtMjM2YTY1MjI2NzdjIiwidCI6ImMwZTA2MDFmLTBmYWMtNDQ5Yy05Yzg4LWExMDRjNGViOWYyOCJ9&pageName=ReportSection">Department of Health and Human Services</a> &middot; Built by <a href="https://github.com/vungyn">@vungyn</a></footer>
-		</body>
+        </body>
 </html>

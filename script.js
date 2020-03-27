@@ -162,15 +162,54 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (type == 'lga') {
             data.lga = response.results[0].result.data.dsr.DS[0].PH[0].DM0;
 
+            var lga = [];
+            var range = [];
+
             data.lga.forEach(function(i, k) {
                 var cases = i.C[1];
                 var index = 0;
+                
                 while (cases === undefined) {
                     cases = data.lga[k - ++index].C[1];
                 }
-                // + (i.C[1] !== undefined ? i.C[1] : data.lga[k - 1].C[1])
                 document.querySelector('.lga').innerHTML += '<li class="lga__item"><div class="lga__name">' + i.C[0] + '</div><div class="lga__result">' + cases + '</div></li>';
+                lga[i.C[0].split(' (')[0].toUpperCase()] = cases;
+
+                range.min = range.min === undefined || range.min > cases ? cases : range.min;
+                range.max = range.max === undefined || range.max < cases ? cases : range.max;
             });
+
+            var colors = chroma.scale(['#007780', '#fff', '#dd0033']).domain([range.min, range.max]);
+
+            var map = L.map(document.querySelector('.map')).setView([-36.854167, 144.281111], 8);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            var x = new XMLHttpRequest();
+            x.open('GET', 'lga.geojson');
+            x.setRequestHeader('Content-Type', 'application/json');
+            x.responseType = 'json';
+            x.onload = function() {
+                if (x.readyState === 4 && x.status === 200) {
+                    var geoJSON = L.geoJSON(x.response, {style: style, onEachFeature: onEachFeature}).addTo(map);
+                    map.fitBounds(geoJSON.getBounds());
+                }
+            };
+            x.send();
+        }
+
+        function style(feature) {
+            return {
+                weight: 1,
+                opacity: 1,
+                color: '#e3e3e3',
+                fillOpacity: 0.75,
+                fillColor: colors(lga[feature.properties.ABB_NAME])
+            };
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.bindPopup(feature.properties.ABB_NAME + ': ' + (lga[feature.properties.ABB_NAME] !== undefined ? lga[feature.properties.ABB_NAME] : 0));
         }
     }
 });
