@@ -36,21 +36,25 @@ window.addEventListener('DOMContentLoaded', () => {
             var daily = [];
             var cumulative = [];
             var cases = 0;
+            var first;
+            var undated;
 
-            if (data.casechart[0].C.length == 1 && data.casechart[0].C[0] == 1) {
+            if (data.casechart[0].C[0] < 10) {
+                undated = data.casechart[0].C[0];
                 data.casechart.some(function(i) {
-                    if (i.C[0] == 1577836800000) {
-                        i.C.push(data.casechart[0].C);
-                        data.casechart.shift();
+                    if (i.C.length == 2) {
+                        first = i.C[0];
                         return true;
                     }
                 });
             }
             data.casechart.forEach(function(i) {
-                daily.push({t: moment(i.C[0]).startOf('day'), y: i.C[0] == 1577836800000 ? 0 : i.C[2] !== undefined ? i.C[2] : i.C[1] !== undefined && i.C[1] !== cases ? i.C[1] - cases : 0});
-                if (i.C[1] !== undefined) {
-                    cumulative.push({t: moment(i.C[0]).startOf('day'), y: i.C[1]});
-                    cases = i.C[1];
+                if (i.C[0] >= first) {
+                    daily.push({t: moment(i.C[0]).startOf('day'), y: i.C[0] == first ? i.C[1] - undated : i.C[2] !== undefined ? i.C[2] : i.C[1] !== undefined && i.C[1] !== cases ? i.C[1] - cases : 0});
+                    if (i.C[1] !== undefined) {
+                        cumulative.push({t: moment(i.C[0]).startOf('day'), y: i.C[1]});
+                        cases = i.C[1];
+                    }
                 }
             });
 
