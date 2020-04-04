@@ -37,19 +37,14 @@ window.addEventListener('DOMContentLoaded', () => {
             var cumulative = [];
             var cases = 0;
             var first;
-            var undated;
 
-            if (data.casechart[0].C[0] < 10) {
-                undated = data.casechart[0].C[0];
-                data.casechart.some(function(i) {
-                    if (i.C.length == 2) {
-                        first = i.C[0];
-                        return true;
-                    }
-                });
-            }
+            var undated = data.casechart[0].C[0] < 10 ? data.casechart[0].C[0] : 0;
+
             data.casechart.forEach(function(i) {
-                if (i.C[0] >= first) {
+                if (i.C.length == 2 || first !== undefined) {
+                    if (first == undefined) {
+                        first = i.C[0];
+                    }
                     daily.push({t: moment(i.C[0]).startOf('day'), y: i.C[0] == first ? i.C[1] - undated : i.C[2] !== undefined ? i.C[2] : i.C[1] !== undefined && i.C[1] !== cases ? i.C[1] - cases : 0});
                     if (i.C[1] !== undefined) {
                         cumulative.push({t: moment(i.C[0]).startOf('day'), y: i.C[1]});
